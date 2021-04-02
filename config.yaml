@@ -2,7 +2,7 @@ settings:
   title: 'Status Page'
   url: 'https://status.typora.io' # used for Slack messages
   logo: logo-192x192.png # image in ./public/ folder
-  daysInHistogram: 30 # number of days you want to display in histogram
+  daysInHistogram: 60 # number of days you want to display in histogram
   collectResponseTimes: true # collects avg response times from CRON locations
 
   allmonitorsOperational: 'All Systems Operational'
@@ -18,6 +18,12 @@ monitors:
   - id: typora.io # unique identifier
     name: typora.io
     url: 'https://typora.io/' # URL to fetch
+    method: GET # default=GET
+    expectStatus: 200 # operational status, default=200
+    followRedirect: false # should fetch follow redirects, default=false
+  - id: appmakes.io # unique identifier
+    name: appmakes.io
+    url: 'https://appmakes.io/' # URL to fetch
     method: GET # default=GET
     expectStatus: 200 # operational status, default=200
     followRedirect: false # should fetch follow redirects, default=false
